@@ -1,0 +1,69 @@
+/**
+ * this is the main configuration file of your bit workspace.
+ * for full documentation, please see: https://bit.dev/reference/workspace/workspace-json
+ **/{
+  "$schema": "https://static.bit.dev/teambit/schemas/schema.json",
+  /**
+   * main configuration of the Bit workspace.
+   **/
+  "teambit.workspace/workspace": {
+    /**
+     * the name of the component workspace. used for development purposes.
+     **/
+    "name": "my-components",
+    /**
+     * set the icon to be shown on the Bit server.
+     **/
+    "icon": "https://static.bit.dev/bit-logo.svg",
+    /**
+     * default directory to place a component during `bit import` and `bit create`.
+     * the following placeholders are available:
+     * name - component name includes namespace, e.g. 'ui/button'.
+     * scopeId - full scope-id includes the owner, e.g. 'teambit.compilation'.
+     * scope - scope name only, e.g. 'compilation'.
+     * owner - owner name in bit.dev, e.g. 'teambit'.
+     **/
+    "defaultDirectory": "{scope}/{name}",
+    /**
+     * default scope for all components in workspace.
+     **/
+    "defaultScope": "luisbc.react-scope",
+    "resolveAspectsFromNodeModules": true,
+    "resolveEnvsFromRoots": true
+  },
+  /**
+   * main configuration for component dependency resolution.
+   **/
+  "teambit.dependencies/dependency-resolver": {
+    /**
+     * choose the package manager for Bit to use. you can choose between 'yarn', 'pnpm'
+     */
+    "packageManager": "teambit.dependencies/pnpm",
+    "policy": {
+      "dependencies": {
+        "@teambit/defender.eslint-linter": "1.0.8",
+        "@teambit/defender.jest-tester": "1.0.6",
+        "@teambit/defender.prettier-formatter": "1.0.2",
+        "@teambit/dependencies.modules.packages-excluder": "1.0.4",
+        "@teambit/envs.docs.env-overview-template": "0.0.2",
+        "@teambit/mdx.ui.mdx-scope-context": "1.0.0",
+        "@teambit/preview.react-preview": "1.0.9",
+        "@teambit/react.mounter": "1.0.2",
+        "@teambit/react.react-env": "1.0.16",
+        "@teambit/typescript.typescript-compiler": "2.0.7",
+        "eslint": "^7.28.0"
+      },
+      "peerDependencies": {}
+    },
+    "linkCoreAspects": true,
+    "rootComponents": true
+  },
+  "teambit.workspace/workspace-config-files": {
+    "enableWorkspaceConfigWrite": true
+  },
+  "teambit.generator/generator": {
+    "envs": [
+      "luisbc.react-scope/envs/my-react-env"
+    ]
+  }
+}
